@@ -1,26 +1,35 @@
 
-const title = "Welcome to React blogs";
-const likes = 50;
-
-const person = { name: "MD ASHIK ALI KHAN", age: 43 };
-
-const link = "http://www.google.com";
+import { useState } from "react";
 
 const Home = () => {
 
-    const hangleClick = (e)=>{
-        console.log(`Hello, React Learners${e}`);
+    const title = "Welcome to React blogs";
+    const likes = 50;
+
+    const [randVal, setValue] =  useState(Math.random() * 1000);
+
+    const person = { name: "MD ASHIK ALI KHAN", age: 43 };
+
+    const link = "http://www.google.com";
+    const handleClick = (e)=>{
+        setValue(Math.random() * 1000);
+    };
+
+    const handleAnotherClick = (name, e)=>{
+        console.log(`Hello, React Learners${name}`);
+        
     };
 
     return (<div className="home">
         <h1>{title}</h1>
         <p>Liked {likes} times</p>
 
-        <p>{Math.random() * 1000}</p>
+        <p>{randVal}</p>
         <a href={link}>Google</a>
         <h2>Home Page</h2>
-        <button onClick={hangleClick}>Click me</button>
-        <button>Click me again</button>
+        <button onClick={handleClick}>Change Value</button>
+        <button onClick={()=>handleAnotherClick('ASHIK')}>Again Click me</button>
+        
     </div>);
 }
 
