@@ -9,16 +9,18 @@ const Home = () => {
 
     const [randVal, setValue] =  useState(Math.random() * 1000);
 
-    const [blogs, setBlogs] = useState([
-        { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
+    // const [blogs, setBlogs] = useState([
+    //     { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
 
-        { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
+    //     { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
 
-        { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'Ashik', id: 3 },
+    //     { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'Ashik', id: 3 },
 
-        { title: 'Back end dev tips', body: 'lorem ipsum...', author: 'Ashik', id: 4 }
+    //     { title: 'Back end dev tips', body: 'lorem ipsum...', author: 'Ashik', id: 4 }
 
-    ]);
+    // ]);
+
+    const [blogs, setBlogs] = useState(null);
 
     const person = { name: "MD ASHIK ALI KHAN", age: 43 };
 
@@ -42,6 +44,25 @@ const Home = () => {
         console.log('Render change');
     }, [randVal]);
 
+    useEffect(()=>{
+        fetch("http://localhost:8000/blogs")
+        .then(resp=>{
+            return resp.json();
+        })
+        .then(data=>{
+            setBlogs(data);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }, []);
+
+
+    useEffect(()=>{
+
+    }, [blogs]);
+
+
     return (<div className="home">
         <h1>{title}</h1>
         <p>Liked {likes} times</p>
@@ -52,10 +73,10 @@ const Home = () => {
         <button onClick={handleClick}>Change Value</button>
         <button onClick={()=>handleAnotherClick('ASHIK')}>Again Click me</button>
 
-        <BlogList blogs={blogs} title="All Blogs!" handleDelete={handleDelete}/>
+        { blogs && <BlogList blogs={blogs} title="All Blogs!" handleDelete={handleDelete}/>}
 
-        <BlogList blogs={blogs.filter((blog)=>blog.author==='Ashik')} title="Ashik's Blogs!"
-            handleDelete={handleDelete}/>
+        {blogs && <BlogList blogs={blogs.filter((blog)=>blog.author==='Ashik')} title="Ashik's Blogs!"
+            handleDelete={handleDelete}/>}
         
     </div>);
 }
