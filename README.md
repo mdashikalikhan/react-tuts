@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## json server
+
+if you need back-end  API endpoint for a particalar json, then create a json like data/db.json. And merge all json data, And run following command. This will create API which return the particular jon data.
+
+### ` npx json-server --watch data/db.json --port 8000`
+
 ## Available Scripts
 
 In the project directory, you can run:
