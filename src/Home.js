@@ -22,6 +22,8 @@ const Home = () => {
 
     const [blogs, setBlogs] = useState(null);
 
+    const [pending, isPending] = useState(true);
+
     const person = { name: "MD ASHIK ALI KHAN", age: 43 };
 
     const link = "http://www.google.com";
@@ -45,16 +47,24 @@ const Home = () => {
     }, [randVal]);
 
     useEffect(()=>{
-        fetch("http://localhost:8000/blogs")
-        .then(resp=>{
-            return resp.json();
-        })
-        .then(data=>{
-            setBlogs(data);
-        })
-        .catch(err=>{
-            console.log(err);
-        })
+        setTimeout(()=>{
+            fetch("http://localhost:8000/blogs")
+            .then(resp=>{
+                //console.log(resp);
+                if(!resp.ok){
+                    throw Error("Could not fetch the data because of error...")
+                }
+                return resp.json();
+            })
+            .then(data=>{
+                setBlogs(data);
+                isPending(false);
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+        }, 2000);
+        
     }, []);
 
 
@@ -72,6 +82,8 @@ const Home = () => {
         <h2>Home Page</h2>
         <button onClick={handleClick}>Change Value</button>
         <button onClick={()=>handleAnotherClick('ASHIK')}>Again Click me</button>
+
+        {pending && <div>Loading...</div>}
 
         { blogs && <BlogList blogs={blogs} title="All Blogs!" handleDelete={handleDelete}/>}
 
