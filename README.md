@@ -8,6 +8,10 @@ if you need back-end  API endpoint for a particalar json, then create a json lik
 
 ### ` npx json-server --watch data/db.json --port 8000`
 
+## React router
+
+### `npm install react-router-dom`
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import BlogList from "./BlockList";
+import useFetch from "./useFetch";
 
 const Home = () => {
 
@@ -9,20 +10,10 @@ const Home = () => {
 
     const [randVal, setValue] =  useState(Math.random() * 1000);
 
-    // const [blogs, setBlogs] = useState([
-    //     { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
+    const [blogs, setBlogs] = useState([]);
 
-    //     { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
-
-    //     { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'Ashik', id: 3 },
-
-    //     { title: 'Back end dev tips', body: 'lorem ipsum...', author: 'Ashik', id: 4 }
-
-    // ]);
-
-    const [blogs, setBlogs] = useState(null);
-
-    const [pending, isPending] = useState(true);
+    
+    const {data:blogList, pending, errorMessage} = useFetch('http://localhost:8000/blogs');
 
     const person = { name: "MD ASHIK ALI KHAN", age: 43 };
 
@@ -46,31 +37,17 @@ const Home = () => {
         console.log('Render change');
     }, [randVal]);
 
+    
+
+
     useEffect(()=>{
-        setTimeout(()=>{
-            fetch("http://localhost:8000/blogs")
-            .then(resp=>{
-                //console.log(resp);
-                if(!resp.ok){
-                    throw Error("Could not fetch the data because of error...")
-                }
-                return resp.json();
-            })
-            .then(data=>{
-                setBlogs(data);
-                isPending(false);
-            })
-            .catch(err=>{
-                console.log(err);
-            })
-        }, 2000);
+        if(blogList){
+            setBlogs(blogList);
+        } else{
+            setBlogs([]);
+        }
         
-    }, []);
-
-
-    useEffect(()=>{
-
-    }, [blogs]);
+    }, [blogList]);
 
 
     return (<div className="home">
@@ -82,6 +59,8 @@ const Home = () => {
         <h2>Home Page</h2>
         <button onClick={handleClick}>Change Value</button>
         <button onClick={()=>handleAnotherClick('ASHIK')}>Again Click me</button>
+
+        {errorMessage && <div>{errorMessage}</div>}
 
         {pending && <div>Loading...</div>}
 
