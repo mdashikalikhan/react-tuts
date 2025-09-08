@@ -10,7 +10,7 @@ const Home = () => {
 
     const [randVal, setValue] =  useState(Math.random() * 1000);
 
-    const [blogs, setBlogs] = useState([]);
+    const [blogs, setBlogs] = useState(null);
 
     
     const {data:blogList, pending, errorMessage} = useFetch('http://localhost:8000/blogs');
@@ -44,7 +44,7 @@ const Home = () => {
         if(blogList){
             setBlogs(blogList);
         } else{
-            setBlogs([]);
+            setBlogs(null);
         }
         
     }, [blogList]);
