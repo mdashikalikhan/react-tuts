@@ -41,6 +41,12 @@
       "title": "Java Script Blog",
       "body": "Java Script is a front-end engine.",
       "author": "Ashik"
+    },
+    {
+      "id": "375d",
+      "title": "My New Blog",
+      "body": "Blog is in details as follows...",
+      "author": "mario"
     }
   ]
 }
