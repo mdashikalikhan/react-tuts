@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -9,12 +9,14 @@ const Navbar = () => {
             <h1>React Tutorials</h1>
             <div className="links">
                 
-                <Link to="/">Home</Link>
-                <Link to="/create" style={{
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/create" style={{
                     color: "white",
                     backgroundColor: "#f1356d",
                     borderRadius: "8px"
-                }}>New blog</Link>
+                }}>New blog</NavLink>
+                <NavLink to="/about">About</NavLink>
+                <NavLink to="/help">Help</NavLink>
             </div>
         </nav>
         // <nav class="navbar bg-primary" data-bs-theme="dark">
