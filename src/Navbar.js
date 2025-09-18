@@ -17,6 +17,7 @@ const Navbar = () => {
                 }}>New blog</NavLink>
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/help">Help</NavLink>
+                <NavLink to="/careers">Careers</NavLink>
             </div>
         </nav>
         // <nav class="navbar bg-primary" data-bs-theme="dark">

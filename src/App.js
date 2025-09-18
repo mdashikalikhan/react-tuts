@@ -8,6 +8,9 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import NotFound from './NotFound';
 import About from './About';
 import HelpLayout from './HelpLayout';
+import Faq from './Faq';
+import Contact from './Contact';
+import Careers from './Careers';
 
 
 const RootLayout = () => {
@@ -48,7 +51,21 @@ const router = createBrowserRouter(
       },
       {
         path: "/help",
-        element: <HelpLayout/>
+        element: <HelpLayout/>,
+        children:[
+          {
+            path: "faq",
+            element: <Faq/>
+          },
+          {
+            path: "contact",
+            element: <Contact/>
+          }
+        ]
+      },
+      {
+        path: "careers",
+        element: <Careers/>
       }
     ]
   }
