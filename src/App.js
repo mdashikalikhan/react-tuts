@@ -10,7 +10,9 @@ import About from './About';
 import HelpLayout from './HelpLayout';
 import Faq from './Faq';
 import Contact from './Contact';
-import Careers from './Careers';
+import Careers, { careersLoader } from './Careers';
+import CareersLayout from './CareersLayout';
+import CareerDetails, { carrerDetailsDataLoader } from './CareerDetails';
 
 
 const RootLayout = () => {
@@ -65,7 +67,19 @@ const router = createBrowserRouter(
       },
       {
         path: "careers",
-        element: <Careers/>
+        element: <CareersLayout/>,
+        children:[
+          {
+            index: true,
+            element: <Careers/>,
+            loader: careersLoader
+          },
+          {
+            path:":id",
+            element: <CareerDetails/>,
+            loader: carrerDetailsDataLoader
+          }
+        ]
       }
     ]
   }
