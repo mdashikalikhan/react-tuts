@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import Breadcrumb from "./Breadcrumb";
 
 const Navbar = () => {
 
@@ -18,7 +19,9 @@ const Navbar = () => {
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/help">Help</NavLink>
                 <NavLink to="/careers">Careers</NavLink>
+                
             </div>
+            
         </nav>
         // <nav class="navbar bg-primary" data-bs-theme="dark">
             

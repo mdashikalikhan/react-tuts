@@ -13,12 +13,15 @@ import Contact from './Contact';
 import Careers, { careersLoader } from './Careers';
 import CareersLayout from './CareersLayout';
 import CareerDetails, { carrerDetailsDataLoader } from './CareerDetails';
+import CareersError from './CareersError';
+import Breadcrumb from './Breadcrumb';
 
 
 const RootLayout = () => {
   return (
     <div className="App">
       <Navbar />
+      <Breadcrumb/>
       <div className="content">
         <Outlet />
       </div>
@@ -68,6 +71,7 @@ const router = createBrowserRouter(
       {
         path: "careers",
         element: <CareersLayout/>,
+        errorElement: <CareersError/>,
         children:[
           {
             index: true,
@@ -78,6 +82,7 @@ const router = createBrowserRouter(
             path:":id",
             element: <CareerDetails/>,
             loader: carrerDetailsDataLoader
+            
           }
         ]
       }

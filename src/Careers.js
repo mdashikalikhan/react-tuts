@@ -24,6 +24,10 @@ export default Careers;
 
 export const careersLoader = async ()=>{
     const resp = await fetch("http://localhost:8000/careers");
+    if(!resp.ok){
+        throw new Error("Unable to fetch data", {status: 404});
+    }
+
     return resp.json();
 }
 

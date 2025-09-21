@@ -20,7 +20,7 @@ export const carrerDetailsDataLoader = async ({params})=>{
     const resp = await fetch(`http://localhost:8000/careers/${params.id}`);
 
     if(!resp.ok){
-        throw new Response("Not Found", {status: 404});
+        throw new Error("Data Not Found", {status: 404});
     }
 
     return resp.json();
