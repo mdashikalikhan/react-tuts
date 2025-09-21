@@ -9,7 +9,7 @@ import NotFound from './NotFound';
 import About from './About';
 import HelpLayout from './HelpLayout';
 import Faq from './Faq';
-import Contact from './Contact';
+import Contact, { handleContactSubmit } from './Contact';
 import Careers, { careersLoader } from './Careers';
 import CareersLayout from './CareersLayout';
 import CareerDetails, { carrerDetailsDataLoader } from './CareerDetails';
@@ -64,7 +64,8 @@ const router = createBrowserRouter(
           },
           {
             path: "contact",
-            element: <Contact/>
+            element: <Contact/>,
+            action: handleContactSubmit
           }
         ]
       },
