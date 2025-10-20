@@ -1,10 +1,10 @@
 
-import './App.css';
+//import './App.css';
 import BlogDetails from './BlogDetails';
 import Create from './Create';
 import Home from './Home';
-import Navbar from './Navbar';
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+
+import { createBrowserRouter,  RouterProvider } from 'react-router-dom';
 import NotFound from './NotFound';
 import About from './About';
 import HelpLayout from './HelpLayout';
@@ -14,25 +14,26 @@ import Careers, { careersLoader } from './Careers';
 import CareersLayout from './CareersLayout';
 import CareerDetails, { carrerDetailsDataLoader } from './CareerDetails';
 import CareersError from './CareersError';
-import Breadcrumb from './Breadcrumb';
+import { RootLayout } from './RootLayout';
 
 
-const RootLayout = () => {
-  return (
-    <div className="App">
-      <Navbar />
-      <Breadcrumb/>
-      <div className="content">
-        <Outlet />
-      </div>
-    </div>
-  );
-}
+
+// const RootLayout = () => {
+//   return (
+//     <div className="App">
+//       <Navbar />
+//       <Breadcrumb/>
+//       <div className="content">
+//         <Outlet />
+//       </div>
+//     </div>
+//   );
+// }
 
 const router = createBrowserRouter(
   [{
     path: "/",
-    element: <RootLayout />,
+    element: <RootLayout />, 
     children: [
       {
         index: true,
