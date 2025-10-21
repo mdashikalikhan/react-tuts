@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Modern Approach
+
+### '  npm create vite@latest my-app -- --template react
+
 ## json server
 
 if you need back-end  API endpoint for a particalar json, then create a json like data/db.json. And merge all json data, And run following command. This will create API which return the particular jon data.
